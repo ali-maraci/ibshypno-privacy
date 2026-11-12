@@ -26,12 +26,12 @@
     <div class="meta">
         <strong>Publisher:</strong> chemonitor<br>
         <strong>Contact:</strong> <a href="mailto:chemonitor@gmail.com">chemonitor@gmail.com</a><br>
-        <strong>Effective date:</strong> 2026-04-09<br>
+        <strong>Effective date:</strong> 2026-11-11<br>
         <strong>App:</strong> IBS Hypno (Android)
     </div>
 
     <h2>Summary</h2>
-    <p>IBS Hypno stores everything on your device and sends nothing to us or to any third party. We do not collect, transmit, or share any personal data.</p>
+    <p>IBS Hypno keeps everything you enter on your device. The only thing the app sends over the internet is a request for the session audio you choose to play, which streams over HTTPS from a server run by Cloudflare. We do not collect your answers, symptoms or check-ins, and there is no account.</p>
 
     <h2>What data the app stores on your device</h2>
     <p>The app uses Android's local DataStore to remember your preferences and progress <strong>on your device only</strong>. This includes:</p>
@@ -49,7 +49,7 @@
     <ul>
         <li>No account. No sign-up.</li>
         <li>No analytics, no crash reporting, no advertising SDKs.</li>
-        <li>No network requests of any kind.</li>
+        <li>No account, answers, symptoms or check-ins are ever sent to us or to anyone else. The only network requests the app makes are those that stream session audio (see &ldquo;Session audio streaming&rdquo; below).</li>
         <li>No access to your contacts, photos, location, microphone, or camera.</li>
         <li>No health data shared with Google Health Connect or any other platform.</li>
     </ul>
@@ -57,11 +57,16 @@
     <h2>Permissions the app requests</h2>
     <ul>
         <li><strong>Notifications (Android 13+):</strong> used only to show reminder notifications you schedule yourself. Decline-able; the app still works.</li>
+        <li><strong>Internet:</strong> used only to stream session audio.</li>
+        <li><strong>Wake lock:</strong> used only to keep audio loading while the screen is off.</li>
         <li><strong>Receive boot completed:</strong> used only to re-register your reminder alarms after the device reboots.</li>
     </ul>
 
     <h2>Data sharing</h2>
-    <p>None. Because we do not collect data, there is nothing to share.</p>
+    <p>We do not sell or share your personal data. Session audio is streamed through Cloudflare (Workers and R2, with storage in the EU), which is the only processor involved. See &ldquo;Session audio streaming&rdquo; below.</p>
+
+    <h2>Session audio streaming</h2>
+    <p>Session audio streams over HTTPS from a Cloudflare Worker in front of storage in the EU. Each request carries your device's IP address, the name of the recording, the time of the request, an app key (the same for every install) and a <code>User-Agent</code> of the form <code>IBSHypno/&lt;version&gt;</code>. Our server stores and logs nothing. Cloudflare keeps short-lived rate-limit counters keyed by IP address. No account, answers, symptoms or check-ins are sent.</p>
 
     <h2>Data retention and deletion</h2>
     <p>All data is stored locally on your device and is removed when you uninstall the app or clear the app's storage from Android Settings &rarr; Apps &rarr; IBS Hypno &rarr; Storage &rarr; Clear data.</p>
